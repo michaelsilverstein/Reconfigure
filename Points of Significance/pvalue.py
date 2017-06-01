@@ -1,5 +1,6 @@
 import numpy as np
-import scipy.stats.ttest_1samp
+import scipy.stats as sp
+import pandas as pd
 import matplotlib.pyplot as plt
 
 #http://www.nature.com/nmeth/journal/v14/n1/full/nmeth.4120.html
@@ -47,9 +48,26 @@ def fig2():
 
     #Confidence interval
     #CI = (x - z * s/sqrt(n), x + z * s/sqrt(n)), for z = 1.96 for 95% confidence interval
-    CI = means-1.96*stds/np.sqrt(100),means+1.96*stds/np.sqrt(100) #Two lists of each end point
-    CI = [[CI[0][x],CI[1][x]] for x in range(len(means))] #Reorganize to pairwise
+    CIs = means-1.96*stds/np.sqrt(100),means+1.96*stds/np.sqrt(100) #Two lists of each end point
+    CIs = [[CIs[0][x],CIs[1][x]] for x in range(len(means))] #Reorganize to pairwise
 
     #Calculate pvalue of each sample
+    ps = [sp.ttest_1samp(s,0)[1] for s in samples]
 
+    #Combine all data
+    data = np.array([np.append(CIs[x],1-ps[x]) for x in range(len(ps))]) #1-p value for most significant to be highest
+    for d in data:
+        p = d[2]
+        x,y= (d[0],d[1]),(p,p)
+        axs[0].plot(np.mean(x),p,'o',color='black')
+        if p < 0.95:
+            axs[0].plot(x,y,color='black')
+        else:
+            axs[0].plot(x,y,color='steelblue')
+    axs[0].axvline(0,color='black')
+    axs[0].set_title('95% CI when null is true')
+    axs[0].set_ylim(0,1.05)
 
+    
+    plt.show()
+fig2()
