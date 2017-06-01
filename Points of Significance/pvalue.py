@@ -14,7 +14,10 @@ def fig1():
     Simulated P values from 1,000 statistical tests when H0 is true.
     The distribution is uniform and, on average, 5% of P < 0.05 (blue).
     """
+    #Samples from 1000 tests
     uniform = np.random.random(1000)
+
+    #Plot
     axs[0].hist(uniform[uniform>0.05],bins=23,facecolor='black')
     axs[0].hist(uniform[uniform<=0.05],bins=2,facecolor='steelblue')
     axs[0].set_title('Distribution of P values when null is true')
@@ -23,7 +26,10 @@ def fig1():
     (b)
     The distribution of the minimum P value across 1,000 simulations of 10 tests when H0 is true.
     """
+    #Perform random tests and keep minimum from each
     multitest = np.array([min(np.random.random(10)) for _ in range(1000)])
+
+    #Plot
     axs[1].hist(multitest[multitest>0.05],bins=23,facecolor='black')
     axs[1].hist(multitest[multitest<=0.05],bins=2,facecolor='steelblue')
     axs[1].set_title('Distribution of minimum P value for 10 tests when null is true')
@@ -56,18 +62,23 @@ def fig2():
 
     #Combine all data
     data = np.array([np.append(CIs[x],1-ps[x]) for x in range(len(ps))]) #1-p value for most significant to be highest
-    for d in data:
-        p = d[2]
-        x,y= (d[0],d[1]),(p,p)
-        axs[0].plot(np.mean(x),p,'o',color='black')
+
+    #Plot
+    for d in data: #For each CI
+        p = d[2] #1-P value
+        x,y= (d[0],d[1]),(p,p) #CI at height of 1-p
         if p < 0.95:
-            axs[0].plot(x,y,color='black')
+            axs[0].plot(np.mean(x), p, 'o', color='black') #Draw midpoint of CI
+            axs[0].plot(x,y,color='black') #Draw CI
         else:
-            axs[0].plot(x,y,color='steelblue')
-    axs[0].axvline(0,color='black')
+            axs[0].plot(np.mean(x), p, 'o', color='steelblue') #Draw midpoint of CI
+            axs[0].plot(x,y,color='steelblue') #Draw CI
+
+    axs[0].axvline(0,color='black') #Vertical at 0
+    axs[0].axhline(0.95,ls=':',color='black') #Horizontal at 0.95 (alpha = 0.05)
     axs[0].set_title('95% CI when null is true')
     axs[0].set_ylim(0,1.05)
 
-    
     plt.show()
+    # plt.savefig('ReconFigure2.png')
 fig2()
