@@ -3,6 +3,10 @@ import scipy.stats as sp
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#Created by Michael Silverstein
+#msilvers@broadinstitute.org
+
+#Inspired by:
 #http://www.nature.com/nmeth/journal/v14/n1/full/nmeth.4120.html
 
 def fig1():
