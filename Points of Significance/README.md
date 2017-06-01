@@ -1,7 +1,7 @@
 # Figure comparison
 This paper shows the power and the weakness of the often used 'P value'. These figures explore the nature of what the P value is actually measuring.
 The code for these figures is [here](https://github.com/michaelsilverstein/Reconfigure/blob/master/Points%20of%20Significance/pvalue.py)
-
+The original paper is [here](http://www.nature.com/nmeth/journal/v14/n1/full/nmeth.4120.html)
 ## Figure 1
 Theirs:
 
