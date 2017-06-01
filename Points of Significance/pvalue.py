@@ -26,5 +26,6 @@ def fig1():
     axs[1].hist(multitest[multitest>0.05],bins=23,facecolor='black')
     axs[1].hist(multitest[multitest<=0.05],bins=2,facecolor='steelblue')
     axs[1].set_title('Distribution of minimum P value for 10 tests when null is true')
-    plt.show()
-    # plt.savefig('ReconFigure1.png')
+    # plt.show()
+    plt.savefig('ReconFigure1.png')
+fig1()
