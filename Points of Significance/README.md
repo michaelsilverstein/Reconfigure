@@ -5,3 +5,7 @@ The code for these figures is [here](https://github.com/michaelsilverstein/Recon
 ## Figure 1
 ![Paper Figure 1](https://github.com/michaelsilverstein/Reconfigure/blob/master/Points%20of%20Significance/PaperFigure1.jpg?raw=true)
 ![Reconfig1](https://github.com/michaelsilverstein/Reconfigure/blob/master/Points%20of%20Significance/ReconFigure1.png?raw=true)
+
+## Figure 2
+![Paper Figure 2](https://github.com/michaelsilverstein/Reconfigure/blob/master/Points%20of%20Significance/PaperFigure2.jpg)
+![Reconfig2](https://github.com/michaelsilverstein/Reconfigure/blob/master/Points%20of%20Significance/ReconFigure2.png)
