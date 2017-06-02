@@ -54,7 +54,7 @@ def fig2():
     """
     samples = np.random.normal(size=(100,100)) #Generate 100 tests each of sample size 100
     means = np.mean(samples,axis=1) #Find average of each test
-    stds = np.std(samples,axis=1)
+    stds = np.std(samples,axis=1) #Find standard deviation for each test
 
     #Confidence interval
     #CI = (x - z * s/sqrt(n), x + z * s/sqrt(n)), for z = 1.96 for 95% confidence interval
@@ -83,6 +83,18 @@ def fig2():
     axs[0].set_title('95% CI when null is true')
     axs[0].set_ylim(0,1.05)
 
+    """
+    (b)
+    100 instances of the 95% confidence interval corresponding to the most significant result from a
+    set of 10 one-sample t-tests of the kind performed in a.
+    """
+    samples = np.random.normal(size=(100,100,10))
+
+
+
+
+
+
+
     plt.show()
     # plt.savefig('ReconFigure2.png')
-fig2()
